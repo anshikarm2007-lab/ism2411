@@ -1,0 +1,111 @@
+#Exercise 1
+
+
+def calculate_tax(price, rate):
+    return price * rate
+
+
+tax1 = calculate_tax(100, 0.07)
+tax2 = calculate_tax(250, 0.08)
+
+
+print(f"Tax for $100 at 7%: ${tax1:.2f}")
+print(f"Tax for $250 at 8%: ${tax2:.2f}")
+
+
+#Exercise 2
+
+
+def apply_discount(price, tier):
+    if tier == "gold":
+        return price * 0.85
+    elif tier == "silver":
+        return price * 0.90
+    elif tier == "bronze":
+        return price * 0.95
+    else:
+        return price
+
+
+original_price = 200
+
+
+for tier in ["gold", "silver", "bronze", "none"] :
+    print(f"{tier}: ${apply_discount(original_price, tier):.2f}")
+
+
+#Exercise 3
+
+
+def final_price(price, tax_rate, discount_tier):
+    discounted_price = apply_discount(price, discount_tier)
+    tax = calculate_tax(discounted_price, tax_rate)
+    return discounted_price + tax
+
+
+print(f"final_price(200, 0.07, 'gold') = ${final_price(200, 0.07, 'gold'):.2f}")
+
+
+#Exercise 4
+orders = [(200, 'gold'), (150, 'silver'), (80, 'bronze'), (500, 'none')]
+    
+for price, tier in orders:
+    total = final_price(price, 0.07, tier)
+    print(f"Price: ${price} | Tier: {tier} | Total: ${total:.2f}")
+
+
+#Exercise 5 
+# broken_sales.py - trace and diagnose before fixing anything.
+sales = [120, 80, 250, 175, 90]
+
+
+total = 0
+for sale in sales:
+    total += sale
+print(f"Total: ${total:.2f}")
+
+
+count = 0
+for sale in sales:
+    count += 1
+print(f"Count: {count}")
+
+
+i = 0
+while i < len(sales):
+    print(sales[i])
+    i += 1
+
+
+#Exercise 6
+x = 100
+def double_it():
+    x = 999
+    return x * 2
+
+
+print (x)
+print(double_it())
+print(x)
+
+
+# 1. The first bug I spotted was an error in how a variable or function was being used.
+# I used the traceback to help me understand where the problem was happening.
+# After looking more closely at the code, I figured out what needed to be fixed.
+# This taught me to read error messages carefully and check my code step by step
+# instead of guessing.
+
+# 2. The apply_discount(price, tier) function takes two inputs: the original
+# price and the customer's membership tier. It checks whether the customer
+# is gold, silver, or bronze and applies the correct discount. Gold gets 15%
+# off, silver gets 10% off, bronze gets 5% off, and any other tier gets no
+# discount. It returns the discounted price. A colleague could use this
+# function by entering a price and tier without needing to understand the
+# code inside it.
+
+# 3. AI Disclosure: I used ChatGPT to help explain Python concepts and
+# understand errors during this lab. The AI explanations helped me understand
+# my mistakes and learn how to fix them. I still reviewed the information
+# and applied what I learned to the code myself.
+
+#Reflection
